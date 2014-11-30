@@ -1,6 +1,16 @@
 {
   "name": "ember-cli-latex-maths",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Typeset LaTeX maths expressions using KaTeX.",
+  "author": "Andy Stanford-Bluntish <andy@bluntish.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andybluntish/ember-cli-latex-maths.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andybluntish/ember-cli-latex-maths/issues"
+  },
+  "license": "MIT",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,12 +20,9 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "https://github.com/stefanpenner/ember-cli",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.2.0",
     "broccoli-asset-rev": "0.3.1",
@@ -31,7 +38,13 @@
     "glob": "^4.0.5"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "latex",
+    "tex",
+    "maths",
+    "math",
+    "typesetting",
+    "katex"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
