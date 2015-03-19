@@ -1,39 +1,44 @@
 import Ember from 'ember';
+import {
+  module,
+  test
+} from 'qunit';
 import startApp from '../helpers/start-app';
 
-var App;
+var application;
 
 module('Acceptance: LatexMaths', {
-  setup: function() {
-    App = startApp();
+  beforeEach: function() {
+    application = startApp();
   },
-  teardown: function() {
-    Ember.run(App, 'destroy');
+
+  afterEach: function() {
+    Ember.run(application, 'destroy');
   }
 });
 
-test('it renders components', function() {
-  expect(1);
+test('it renders components', function(assert) {
+  assert.expect(1);
   visit('/');
 
   andThen(function() {
-    ok(find('.latex-maths').length === 2);
+    assert.ok(find('.latex-maths').length === 2);
   });
 });
 
-test('it renders LaTeX expressions', function() {
-  expect(3);
+test('it renders LaTeX expressions', function(assert) {
+  assert.expect(3);
   visit('/');
 
   andThen(function() {
-    equal(find('.katex').length, 2);
+    assert.equal(find('.katex').length, 2);
   });
 
   andThen(function() {
-    equal(find('#inline .katex .displaystyle').length, 0);
+    assert.equal(find('#inline .katex .displaystyle').length, 0);
   });
 
   andThen(function() {
-    ok(find('#block .katex .displaystyle').length > 0);
+    assert.ok(find('#block .katex .displaystyle').length > 0);
   });
 });
