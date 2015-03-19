@@ -1,29 +1,25 @@
 # Ember-cli-latex-maths
 
-Typeset LaTeX maths expressions using [KaTeX](http://khan.github.io/KaTeX/).
-
+This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
-    npm install ember-cli-latex-maths --save-dev
+* `git clone` this repository
+* `npm install`
+* `bower install`
 
+## Running
 
-## Usage
+* `ember server`
+* Visit your app at http://localhost:4200.
 
-    {{latex-maths expr="c = \sqrt{a^2 + b^2}"}}
+## Running Tests
 
+* `ember test`
+* `ember test --server`
 
-## Options
+## Building
 
-### `expr`
+* `ember build`
 
-Type: `String`
-
-TeX expression to render.
-
-
-### `display`
-
-Type: `Boolean`
-
-Render maths using "display" style typesetting, rather than "inline". Defaults to `false`.
+For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
