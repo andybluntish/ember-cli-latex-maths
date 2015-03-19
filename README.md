@@ -1,4 +1,4 @@
-# Ember-cli-latex-maths
+# Ember-cli-latex-maths [![Build Status](https://travis-ci.org/andybluntish/ember-cli-latex-maths.svg)](https://travis-ci.org/andybluntish/ember-cli-latex-maths)
 
 This README outlines the details of collaborating on this Ember addon.
 
