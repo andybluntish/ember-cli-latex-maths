@@ -6,8 +6,8 @@ module.exports = {
   included: function(app) {
     this._super.included(app);
 
-    app.import(`${app.bowerDirectory}/katex/dist/katex.min.css`);
-    app.import(`${app.bowerDirectory}/katex/dist/katex.min.js`);
+    app.import(app.bowerDirectory + '/katex/dist/katex.min.css');
+    app.import(app.bowerDirectory + '/katex/dist/katex.min.js');
 
     ['eot', 'ttf', 'woff', 'woff2'].forEach(function(ext) {
       [
@@ -23,7 +23,7 @@ module.exports = {
         'KaTeX_Size3-Regular',
         'KaTeX_Size4-Regular'
       ].forEach(function(filename) {
-        app.import(`${app.bowerDirectory}/katex/dist/fonts/${filename}.${ext}`, { destDir: '/assets/fonts' });
+        app.import(app.bowerDirectory + '/katex/dist/fonts/' + filename + '.' + ext, { destDir: '/assets/fonts' });
       });
     });
   }
