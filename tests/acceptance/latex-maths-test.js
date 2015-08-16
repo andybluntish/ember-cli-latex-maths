@@ -5,14 +5,14 @@ import {
 } from 'qunit';
 import startApp from '../helpers/start-app';
 
-var application;
+let application;
 
 module('Acceptance: LatexMaths', {
-  beforeEach: function() {
+  beforeEach() {
     application = startApp();
   },
 
-  afterEach: function() {
+  afterEach() {
     Ember.run(application, 'destroy');
   }
 });

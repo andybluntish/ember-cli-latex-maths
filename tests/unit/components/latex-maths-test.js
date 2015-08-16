@@ -4,7 +4,6 @@ import {
   test
 } from 'ember-qunit';
 
-
 moduleForComponent('latex-maths', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
@@ -14,7 +13,7 @@ test('it renders', function(assert) {
   assert.expect(2);
 
   // creates the component instance
-  var component = this.subject();
+  const component = this.subject();
   assert.equal(component._state, 'preRender');
 
   // renders the component to the page
@@ -31,7 +30,7 @@ test('it is a SPAN tag', function(assert) {
 test('it has a class name denoting it\'s type', function(assert) {
   assert.expect(1);
 
-  var component = this.subject();
+  const component = this.subject();
   this.append();
 
   assert.ok(component.get('element').classList.contains('latex-maths'));
@@ -40,7 +39,7 @@ test('it has a class name denoting it\'s type', function(assert) {
 test('it renders the expression using KaTeX', function(assert) {
   assert.expect(1);
 
-  var component = this.subject();
+  const component = this.subject();
 
   this.append();
 
@@ -54,7 +53,7 @@ test('it renders the expression using KaTeX', function(assert) {
 test('it renders "display=true" expressions in "display style"', function(assert) {
   assert.expect(4);
 
-  var component = this.subject();
+  const component = this.subject();
 
   this.append();
 
