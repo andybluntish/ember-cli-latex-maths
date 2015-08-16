@@ -1,17 +1,13 @@
 /* jshint node: true */
 'use strict';
 
-var path = require('path');
-
 module.exports = {
   name: 'ember-cli-latex-maths',
   included: function(app) {
-    this.app = app;
+    this._super.included(app);
 
-    var vendorPath = path.join('vendor', 'katex');
-
-    app.import(path.join(vendorPath, 'katex.min.css'));
-    app.import(path.join(vendorPath, 'katex.min.js'));
+    app.import(`${app.bowerDirectory}/katex/dist/katex.min.css`);
+    app.import(`${app.bowerDirectory}/katex/dist/katex.min.js`);
 
     ['eot', 'ttf', 'woff', 'woff2'].forEach(function(ext) {
       [
@@ -27,7 +23,7 @@ module.exports = {
         'KaTeX_Size3-Regular',
         'KaTeX_Size4-Regular'
       ].forEach(function(filename) {
-        app.import(path.join(vendorPath, 'fonts', filename + '.' + ext), { destDir: '/assets/fonts' });
+        app.import(`${app.bowerDirectory}/katex/dist/fonts/${filename}.${ext}`, { destDir: '/assets/fonts' });
       });
     });
   }
