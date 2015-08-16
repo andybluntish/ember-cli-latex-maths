@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-latex-maths",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Typeset LaTeX maths expressions using KaTeX.",
   "author": "Andy Stanford-Bluntish <andy@bluntish.net>",
   "repository": {
