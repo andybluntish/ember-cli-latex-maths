@@ -26,19 +26,12 @@ test('it renders components', function(assert) {
   });
 });
 
-test('it renders LaTeX expressions', function(assert) {
-  assert.expect(3);
+test('it renders LaTeX expressions in the correct display mode', function(assert) {
+  assert.expect(2);
   visit('/');
 
   andThen(function() {
-    assert.equal(find('.katex').length, 2);
-  });
-
-  andThen(function() {
-    assert.equal(find('#inline .katex .displaystyle').length, 0);
-  });
-
-  andThen(function() {
-    assert.ok(find('#block .katex .displaystyle').length > 0);
+    assert.equal(find('.latex-maths > .katex').length, 1);
+    assert.equal(find('.latex-maths > .katex-display').length, 1);
   });
 });

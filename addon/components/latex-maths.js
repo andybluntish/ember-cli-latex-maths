@@ -5,8 +5,7 @@ export default Ember.Component.extend({
   classNames: 'latex-maths',
 
   expr: null,
-  display: null,
-  renderedExpr: null,
+  display: false,
 
   _initialTypeset: Ember.on('didInsertElement', function() {
     this.typeset();
@@ -17,15 +16,14 @@ export default Ember.Component.extend({
   }),
 
   typeset: function() {
-    var renderedExpr = this.get('expr') || '';
+    var expr = this.get('expr');
+    var el = this.get('element');
+    var display = this.get('display');
 
-    // Set "display" style
-    if (this.get('display')) {
-      renderedExpr = '\\displaystyle {' + renderedExpr + '}';
+    if (expr && el) {
+      window.katex.render(expr, el, {
+        displayMode: display
+      });
     }
-
-    this.set('renderedExpr', renderedExpr);
-
-    window.katex.render(renderedExpr, this.get('element'));
   }
 });
