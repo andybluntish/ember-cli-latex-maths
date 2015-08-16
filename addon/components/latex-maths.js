@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     Ember.run.once(this, 'typeset');
   }),
 
-  typeset: function() {
+  typeset() {
     var expr = this.get('expr');
     var el = this.get('element');
     var display = this.get('display');
