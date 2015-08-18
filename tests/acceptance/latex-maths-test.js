@@ -1,19 +1,14 @@
 import Ember from 'ember';
-import {
-  module,
-  test
-} from 'qunit';
-import startApp from '../helpers/start-app';
+import { module, test } from 'qunit';
+import startApp from '../../tests/helpers/start-app';
 
-var application;
-
-module('Acceptance: LatexMaths', {
-  beforeEach: function() {
-    application = startApp();
+module('Acceptance | LatexMaths', {
+  beforeEach() {
+    this.application = startApp();
   },
 
-  afterEach: function() {
-    Ember.run(application, 'destroy');
+  afterEach() {
+    Ember.run(this.application, 'destroy');
   }
 });
 
