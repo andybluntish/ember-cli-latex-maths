@@ -1,4 +1,4 @@
-# Ember-cli-latex-maths
+# ember-cli-latex-maths
 
 [![Build Status](https://travis-ci.org/andybluntish/ember-cli-latex-maths.svg?branch=master)](https://travis-ci.org/andybluntish/ember-cli-latex-maths)
 [![Dependency Status](https://david-dm.org/andybluntish/ember-cli-latex-maths.svg)](https://david-dm.org/andybluntish/ember-cli-latex-maths)
@@ -9,6 +9,8 @@
 
 ## Installation
 
-    ember install:addon ember-cli-latex-maths
+```
+ember install:addon ember-cli-latex-maths
+```
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
