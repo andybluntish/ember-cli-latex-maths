@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-latex-maths",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Typeset LaTeX maths expressions using KaTeX.",
   "directories": {
     "doc": "doc",
