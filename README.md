@@ -13,4 +13,18 @@
 ember install:addon ember-cli-latex-maths
 ```
 
+## Usage
+
+### Inline equation
+
+```handlebars
+{{latex-maths expr="a^2 + b^2 = c^2"}}
+```
+
+### Block equation
+
+```handlebars
+{{latex-maths expr="c = \sqrt{a^2 + b^2}" display=true}}
+```
+
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
