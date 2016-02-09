@@ -1,24 +1,32 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
+const {
+  Component,
+  on,
+  observer,
+  get,
+  run: { once }
+} = Ember;
+
+export default Component.extend({
   tagName: 'span',
   classNames: 'latex-maths',
 
   expr: null,
   display: false,
 
-  _initialTypeset: Ember.on('didInsertElement', function() {
+  _initialTypeset: on('didInsertElement', function() {
     this.typeset();
   }),
 
-  _observer: Ember.observer('expr', 'display', function() {
-    Ember.run.once(this, 'typeset');
+  _observer: observer('expr', 'display', function() {
+    once(this, 'typeset');
   }),
 
-  typeset: function() {
-    var expr = this.get('expr');
-    var el = this.get('element');
-    var display = this.get('display');
+  typeset() {
+    const expr = get(this, 'expr');
+    const el = get(this, 'element');
+    const display = get(this, 'display');
 
     if (expr && el) {
       window.katex.render(expr, el, {

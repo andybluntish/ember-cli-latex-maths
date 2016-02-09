@@ -1,4 +1,4 @@
-# Ember-cli-latex-maths
+# ember-cli-latex-maths
 
 [![Build Status](https://travis-ci.org/andybluntish/ember-cli-latex-maths.svg?branch=master)](https://travis-ci.org/andybluntish/ember-cli-latex-maths)
 [![Dependency Status](https://david-dm.org/andybluntish/ember-cli-latex-maths.svg)](https://david-dm.org/andybluntish/ember-cli-latex-maths)
@@ -9,6 +9,22 @@
 
 ## Installation
 
-    ember install:addon ember-cli-latex-maths
+```
+ember install:addon ember-cli-latex-maths
+```
+
+## Usage
+
+### Inline equation
+
+```handlebars
+{{latex-maths expr="a^2 + b^2 = c^2"}}
+```
+
+### Block equation
+
+```handlebars
+{{latex-maths expr="c = \sqrt{a^2 + b^2}" display=true}}
+```
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).

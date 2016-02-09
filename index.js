@@ -1,29 +1,24 @@
 /* jshint node: true */
 'use strict';
 
+var fs = require('fs');
+var path = require('path');
+
 module.exports = {
   name: 'ember-cli-latex-maths',
+
   included: function(app) {
     this._super.included(app);
 
-    app.import(app.bowerDirectory + '/katex/dist/katex.min.css');
-    app.import(app.bowerDirectory + '/katex/dist/katex.min.js');
+    var libPath = path.join(app.bowerDirectory, 'KaTeX', 'dist');
+    var fontPath = path.join(libPath, 'fonts');
 
-    ['eot', 'ttf', 'woff', 'woff2'].forEach(function(ext) {
-      [
-        'KaTeX_AMS-Regular',
-        'KaTeX_Main-Bold',
-        'KaTeX_Main-Italic',
-        'KaTeX_Main-Regular',
-        'KaTeX_Math-BoldItalic',
-        'KaTeX_Math-Italic',
-        'KaTeX_Math-Regular',
-        'KaTeX_Size1-Regular',
-        'KaTeX_Size2-Regular',
-        'KaTeX_Size3-Regular',
-        'KaTeX_Size4-Regular'
-      ].forEach(function(filename) {
-        app.import(app.bowerDirectory + '/katex/dist/fonts/' + filename + '.' + ext, { destDir: '/assets/fonts' });
+    app.import(path.join(libPath, 'katex.min.css'));
+    app.import(path.join(libPath, 'katex.min.js'));
+
+    fs.readdirSync(fontPath).forEach(function(font) {
+      app.import(path.join(fontPath, font), {
+        destDir: path.join('assets', 'fonts')
       });
     });
   }
