@@ -21,7 +21,7 @@ export default Component.extend({
     this.typeset();
   }),
 
-  _observer: observer('expr', 'display', function() {
+  _observer: observer('expr', 'display', 'throwOnError', 'errorColor', function() {
     once(this, 'typeset');
   }),
 
