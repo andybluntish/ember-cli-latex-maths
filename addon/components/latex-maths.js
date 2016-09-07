@@ -29,6 +29,8 @@ export default Component.extend({
     const expr = get(this, 'expr');
     const el = get(this, 'element');
     const display = get(this, 'display');
+    const throwOnError = get(this, 'throwOnError');
+    const errorColor = get(this, 'errorColor');
 
     if (expr && el) {
       window.katex.render(expr, el, {
