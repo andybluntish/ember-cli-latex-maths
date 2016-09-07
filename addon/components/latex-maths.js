@@ -14,6 +14,8 @@ export default Component.extend({
 
   expr: null,
   display: false,
+  throwOnError: true,
+  errorColor: "#cc0000",
 
   _initialTypeset: on('didInsertElement', function() {
     this.typeset();
@@ -30,7 +32,9 @@ export default Component.extend({
 
     if (expr && el) {
       window.katex.render(expr, el, {
-        displayMode: display
+        displayMode: display,
+        throwOnError: throwOnError,
+        errorColor: errorColor,
       });
     }
   }
