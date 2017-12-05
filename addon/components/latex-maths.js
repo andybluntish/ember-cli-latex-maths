@@ -1,12 +1,7 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  on,
-  observer,
-  get,
-  run: { once }
-} = Ember;
+import Component from '@ember/component';
+import { on } from '@ember/object/evented';
+import { get, observer } from '@ember/object';
+import { once } from '@ember/runloop';
 
 export default Component.extend({
   tagName: 'span',
