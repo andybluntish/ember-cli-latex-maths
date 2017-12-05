@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-latex-maths",
   "dependencies": {
-    "KaTeX": "katex#^0.5.1"
+    "KaTeX": "katex#^0.8.3"
   }
 }
