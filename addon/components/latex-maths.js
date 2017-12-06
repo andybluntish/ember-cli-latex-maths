@@ -9,12 +9,14 @@ export default Component.extend({
 
   expr: null,
   display: false,
+  throwOnError: true,
+  errorColor: "#cc0000",
 
   _initialTypeset: on('didInsertElement', function() {
     this.typeset();
   }),
 
-  _observer: observer('expr', 'display', function() {
+  _observer: observer('expr', 'display', 'throwOnError', 'errorColor', function() {
     once(this, 'typeset');
   }),
 
@@ -22,10 +24,14 @@ export default Component.extend({
     const expr = get(this, 'expr');
     const el = get(this, 'element');
     const display = get(this, 'display');
+    const throwOnError = get(this, 'throwOnError');
+    const errorColor = get(this, 'errorColor');
 
     if (expr && el) {
       window.katex.render(expr, el, {
-        displayMode: display
+        displayMode: display,
+        throwOnError: throwOnError,
+        errorColor: errorColor,
       });
     }
   }

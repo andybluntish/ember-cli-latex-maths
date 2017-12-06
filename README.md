@@ -27,4 +27,11 @@ ember install:addon ember-cli-latex-maths
 {{latex-maths expr="c = \sqrt{a^2 + b^2}" display=true}}
 ```
 
+### Color Latex errors rather than throw an exception
+
+```handlebars
+{{latex-maths expr="c = \sqrt{a^2 + b^2  \illegal}" throwOnError=false}}
+```
+
+
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
