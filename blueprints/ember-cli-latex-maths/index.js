@@ -1,9 +1,10 @@
-/*jshint node:true*/
+/* eslint-env node */
+'use strict';
+
 module.exports = {
   description: '',
-  normalizeEntityName: function() {},
-
-  afterInstall: function(options) {
+  normalizeEntityName() {},
+  afterInstall() {
     return this.addBowerPackageToProject('katex');
   }
 };

@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { on } from '@ember/object/evented';
 import { get, observer } from '@ember/object';
 import { once } from '@ember/runloop';
 
@@ -10,11 +9,11 @@ export default Component.extend({
   expr: null,
   display: false,
   throwOnError: true,
-  errorColor: "#cc0000",
+  errorColor: '#cc0000',
 
-  _initialTypeset: on('didInsertElement', function() {
+  didInsertElement() {
     this.typeset();
-  }),
+  },
 
   _observer: observer('expr', 'display', 'throwOnError', 'errorColor', function() {
     once(this, 'typeset');
