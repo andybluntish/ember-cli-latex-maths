@@ -1,25 +1,26 @@
-/* eslint-env node */
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var path = require('path');
+var fs = require('fs')
+var path = require('path')
 
 module.exports = {
-  name: 'ember-cli-latex-maths',
+  name: require('./package').name,
 
   included: function(app) {
-    this._super.included(app);
+    this._super.included.apply(this, arguments)
 
-    var libPath = path.join(app.bowerDirectory, 'KaTeX', 'dist');
-    var fontPath = path.join(libPath, 'fonts');
+    const packagePath = path.dirname(require.resolve('katex/package.json'))
+    const relativePath = path.relative('.', packagePath)
+    const importPath = path.join(relativePath, 'dist')
+    const stylesPath = path.join(importPath, 'katex.min.css')
+    const fontsPath = path.join(importPath, 'fonts')
 
-    app.import(path.join(libPath, 'katex.min.css'));
-    app.import(path.join(libPath, 'katex.min.js'));
+    app.import(stylesPath)
 
-    fs.readdirSync(fontPath).forEach(function(font) {
-      app.import(path.join(fontPath, font), {
-        destDir: path.join('assets', 'fonts')
-      });
-    });
-  }
-};
+    fs.readdirSync(fontsPath).forEach(function(font) {
+      app.import(path.join(fontsPath, font), {
+        destDir: path.join('assets', 'fonts'),
+      })
+    })
+  },
+}

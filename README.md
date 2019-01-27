@@ -1,4 +1,5 @@
-# ember-cli-latex-maths
+ember-cli-latex-maths
+==============================================================================
 
 [![Build Status](https://travis-ci.org/andybluntish/ember-cli-latex-maths.svg?branch=master)](https://travis-ci.org/andybluntish/ember-cli-latex-maths)
 [![Dependency Status](https://david-dm.org/andybluntish/ember-cli-latex-maths.svg)](https://david-dm.org/andybluntish/ember-cli-latex-maths)
@@ -7,13 +8,24 @@
 
 [Ember CLI](http://www.ember-cli.com/) addon to typeset LaTeX maths expressions using [KaTeX](http://khan.github.io/KaTeX/).
 
-## Installation
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
+Installation
+------------------------------------------------------------------------------
 
 ```
-ember install:addon ember-cli-latex-maths
+ember install ember-cli-latex-maths
 ```
 
-## Usage
+
+Usage
+------------------------------------------------------------------------------
 
 ### Inline equation
 
@@ -33,5 +45,7 @@ ember install:addon ember-cli-latex-maths
 {{latex-maths expr="c = \sqrt{a^2 + b^2  \illegal}" throwOnError=false}}
 ```
 
+License
+------------------------------------------------------------------------------
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+This project is licensed under the [MIT License](LICENSE.md).

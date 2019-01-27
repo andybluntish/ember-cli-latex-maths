@@ -1,81 +1,75 @@
-import { moduleForComponent, test, skip } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { module, skip, test } from 'qunit'
+import { setupRenderingTest } from 'ember-qunit'
+import { render } from '@ember/test-helpers'
+import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('latex-maths', 'Integration | Component | latex maths', {
-  integration: true
-});
+module('Integration | Component | latex maths', function(hooks) {
+  setupRenderingTest(hooks)
 
-test('it renders', function(assert) {
-  assert.expect(1);
+  test('it is a <span> tag', async function(assert) {
+    assert.expect(1)
 
-  this.render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`);
+    await render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`)
 
-  assert.equal(this.$('.latex-maths').length, 1);
-});
+    assert.dom('span.latex-maths').exists({ count: 1 })
+  })
 
-test('it is a SPAN tag', function(assert) {
-  assert.expect(1);
+  test('it renders the expression using KaTeX', async function(assert) {
+    assert.expect(1)
 
-  this.render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`);
+    await render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`)
 
-  assert.equal(this.$('.latex-maths').prop('tagName'), 'SPAN');
-});
+    assert.dom('.latex-maths > .katex').exists({ count: 1 })
+  })
 
-test('it renders the expression using KaTeX', function(assert) {
-  assert.expect(1);
+  test('it renders expressions in "inline style" by default', async function(assert) {
+    assert.expect(2)
 
-  this.render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`);
+    await render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`)
 
-  assert.equal(this.$('.latex-maths').find('> .katex').length, 1);
-});
+    assert.dom('.latex-maths > .katex').exists({ count: 1 })
+    assert.dom('.latex-maths > .katex-display').doesNotExist()
+  })
 
-test('it renders expressions in "inline style" by default', function(assert) {
-  assert.expect(2);
+  test('it renders "display=true" expressions in "display style"', async function(assert) {
+    assert.expect(2)
 
-  this.render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}"}}`);
+    await render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}" display=true}}`)
 
-  assert.equal(this.$().find('.latex-maths > .katex').length, 1);
-  assert.equal(this.$().find('.latex-maths > .katex-display').length, 0);
-});
+    assert.dom('.latex-maths > .katex').doesNotExist()
+    assert.dom('.latex-maths > .katex-display').exists({ count: 1 })
+  })
 
-test('it renders "display=true" expressions in "display style"', function(assert) {
-  assert.expect(2);
+  // TODO: assert.throws is not catching the error, need to investigate further
+  skip('it throws an error if there is an illegal latex directive', function(assert) {
+    assert.expect(1)
 
-  this.render(hbs`{{latex-maths expr="c = \\sqrt{a^2 + b^2}" display=true}}`);
+    assert.throws(() => {
+      this.render(hbs`{{latex-maths expr="\\illegal"}}`)
+    })
+  })
 
-  assert.equal(this.$().find('.latex-maths > .katex').length, 0);
-  assert.equal(this.$().find('.latex-maths > .katex-display').length, 1);
-});
+  test('it does not throw an error if there is an illegal latex directive when "throwOnError=false"', async function(assert) {
+    assert.expect(1)
 
-// TODO: assert.throws is not catching the error, need to investigate further
-skip('it throws an error if there is an illegal latex directive', function(assert) {
-  assert.expect(1);
+    await render(hbs`{{latex-maths expr="\\illegal" throwOnError=false}}`)
 
-  assert.throws(() => {
-    this.render(hbs`{{latex-maths expr="\\illegal"}}`);
-  });
-});
+    assert.dom('.latex-maths > .katex').exists({ count: 1 })
+  })
 
-test('it does not throw an error if there is an illegal latex directive when "throwOnError=false"', function(assert) {
-  assert.expect(1);
+  test('it displays illegal directive coloured when "throwOnError=false" if there is an illegal latex directive', async function(assert) {
+    assert.expect(1)
 
-  this.render(hbs`{{latex-maths expr="\\illegal" throwOnError=false}}`);
+    await render(hbs`{{latex-maths expr="\\illegal" throwOnError=false}}`)
 
-  assert.equal(this.$().find('.latex-maths > .katex').length, 1);
-});
+    assert.dom('.latex-maths > .katex span[style^="color"]').exists()
+  })
 
-test('it displays illegal directive coloured when "throwOnError=false" if there is an illegal latex directive', function(assert) {
-  assert.expect(1);
+  test('it displays illegal directive coloured matching errorColor when "throwOnError=false" and "errorColor=#hexCode" if there is an illegal latex directive', async function(assert) {
+    assert.expect(1)
 
-  this.render(hbs`{{latex-maths expr="\\illegal" throwOnError=false}}`);
+    await render(hbs`{{latex-maths expr="\\illegal" throwOnError=false errorColor="#00ff00"}}`)
 
-  assert.notEqual(this.$().find('.latex-maths > .katex span[style^="color"]').length, 0);
-});
-
-test('it displays illegal directive coloured matching errorColor when "throwOnError=false" and "errorColor=#hexCode" if there is an illegal latex directive', function(assert) {
-  assert.expect(1);
-
-  this.render(hbs`{{latex-maths expr="\\illegal" throwOnError=false errorColor="#00ff00"}}`);
-
-  assert.notEqual(this.$().find('.latex-maths > .katex span[style^="color: rgb(0, 255, 0)"]').length, 0);
-});
+    assert.dom('.latex-maths > .katex span[style^="color: rgb(0, 255, 0)"]').exists()
+  })
+})

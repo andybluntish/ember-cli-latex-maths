@@ -1,5 +1,6 @@
-import Component from '@ember/component';
-import { get, computed } from '@ember/object';
+import Component from '@ember/component'
+import { get, computed } from '@ember/object'
+import katex from 'katex'
 
 export default Component.extend({
   tagName: 'span',
@@ -13,21 +14,21 @@ export default Component.extend({
 
   maths: computed('expr', 'display', 'throwOnError', 'errorColor', {
     get() {
-      const expr = get(this, 'expr');
-      const el = get(this, 'element');
-      const displayMode = get(this, 'display');
-      const throwOnError = get(this, 'throwOnError');
-      const errorColor = get(this, 'errorColor');
+      const expr = get(this, 'expr')
+      const el = get(this, 'element')
+      const displayMode = get(this, 'display')
+      const throwOnError = get(this, 'throwOnError')
+      const errorColor = get(this, 'errorColor')
 
       if (expr && el) {
-        window.katex.render(expr, el, {
+        katex.render(expr, el, {
           displayMode,
           throwOnError,
           errorColor,
-        });
+        })
       }
 
-      return expr;
+      return expr
     },
   }),
-});
+})
