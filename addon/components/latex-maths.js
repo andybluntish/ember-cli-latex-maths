@@ -1,5 +1,6 @@
 import Component from '@ember/component'
 import { get, computed } from '@ember/object'
+import katex from 'katex'
 
 export default Component.extend({
   tagName: 'span',
@@ -20,7 +21,7 @@ export default Component.extend({
       const errorColor = get(this, 'errorColor')
 
       if (expr && el) {
-        window.katex.render(expr, el, {
+        katex.render(expr, el, {
           displayMode,
           throwOnError,
           errorColor,
