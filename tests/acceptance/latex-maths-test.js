@@ -1,9 +1,9 @@
-import { findAll, visit } from '@ember/test-helpers';
-import { module, test } from 'qunit';
-import { setupApplicationTest } from 'ember-qunit';
+import { findAll, visit } from '@ember/test-helpers'
+import { module, test } from 'qunit'
+import { setupApplicationTest } from 'ember-qunit'
 
 module('Acceptance | latex maths', function(hooks) {
-  setupApplicationTest(hooks);
+  setupApplicationTest(hooks)
 
   test('it renders components', async function(assert) {
     assert.expect(1)
@@ -19,4 +19,4 @@ module('Acceptance | latex maths', function(hooks) {
     assert.dom('.latex-maths > .katex').exists({ count: 1 })
     assert.dom('.latex-maths > .katex-display').exists({ count: 1 })
   })
-});
+})
