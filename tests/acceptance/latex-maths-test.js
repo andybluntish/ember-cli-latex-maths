@@ -1,23 +1,22 @@
-import { test } from 'qunit'
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance'
+import { findAll, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | latex maths')
+module('Acceptance | latex maths', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('it renders components', function(assert) {
-  assert.expect(1)
-  visit('/')
+  test('it renders components', async function(assert) {
+    assert.expect(1)
+    await visit('/')
 
-  andThen(function() {
-    assert.ok(find('.latex-maths').length === 2)
+    assert.ok(findAll('.latex-maths').length === 2)
   })
-})
 
-test('it renders LaTeX expressions in the correct display mode', function(assert) {
-  assert.expect(2)
-  visit('/')
+  test('it renders LaTeX expressions in the correct display mode', async function(assert) {
+    assert.expect(2)
+    await visit('/')
 
-  andThen(function() {
-    assert.equal(find('.latex-maths > .katex').length, 1)
-    assert.equal(find('.latex-maths > .katex-display').length, 1)
+    assert.dom('.latex-maths > .katex').exists({ count: 1 })
+    assert.dom('.latex-maths > .katex-display').exists({ count: 1 })
   })
-})
+});
