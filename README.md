@@ -45,6 +45,12 @@ Usage
 {{latex-maths expr="c = \sqrt{a^2 + b^2  \illegal}" throwOnError=false}}
 ```
 
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
 License
 ------------------------------------------------------------------------------
 
