@@ -30,10 +30,10 @@
     "test": "tests"
   },
   "dependencies": {
-    "ember-auto-import": "^1.2.19",
+    "ember-auto-import": "^1.5.3",
     "ember-cli-babel": "^7.17.2",
     "ember-cli-htmlbars": "^4.2.2",
-    "katex": "^0.10.1"
+    "katex": "^0.11.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^1.3.0",
@@ -47,7 +47,7 @@
     "ember-cli-eslint": "^5.1.0",
     "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-sri": "^2.1.1",
-    "ember-cli-template-lint": "^1.0.0-beta.3",
+    "ember-cli-template-lint": "^2.0.1",
     "ember-cli-uglify": "^3.0.0",
     "ember-cli-update": "^0.52.1",
     "ember-disable-prototype-extensions": "^1.1.3",
@@ -62,7 +62,7 @@
     "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-node": "^11.0.0",
     "loader.js": "^4.7.0",
-    "prettier": "^1.17.0",
+    "prettier": "^1.19.1",
     "qunit-dom": "^1.0.0"
   },
   "engines": {
